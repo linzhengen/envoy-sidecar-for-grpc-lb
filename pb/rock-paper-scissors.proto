@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+service Janken {
+    rpc Reverse (JankenRequest) returns (JankenResponse) {}
+}
+
+enum ShowType {
+    // グー
+    ROCK = 0;
+    // チョッキ
+    PAPER = 1;
+    // パー
+    SCISSORS = 2;
+}
+
+message JankenRequest {
+    ShowType show_type = 1;
+}
+
+message JankenResponse {
+    ShowType show_type = 1;
+}
