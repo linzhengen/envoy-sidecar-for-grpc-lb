@@ -1,3 +1,3 @@
-module github.com/linzhengen/grpc-lb-with-envoy/pb
+module github.com/linzhengen/envoy-sidecar-for-grpc-lb/pb
 
 go 1.13

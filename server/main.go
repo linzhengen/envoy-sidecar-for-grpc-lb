@@ -7,7 +7,7 @@ import (
 	"net"
 	"os"
 
-	"github.com/linzhengen/grpc-lb-with-envoy/pb"
+	"github.com/linzhengen/envoy-sidecar-for-grpc-lb/pb"
 	"google.golang.org/grpc/metadata"
 
 	"google.golang.org/grpc"

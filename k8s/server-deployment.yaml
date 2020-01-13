@@ -6,7 +6,7 @@ metadata:
   labels:
     app: grpc-server
 spec:
-  replicas: 2
+  replicas: 6
   selector:
     matchLabels:
       app: grpc-server
@@ -25,14 +25,14 @@ spec:
             name: server-sidecar-envoy
       containers:
         - name: envoy
-          image: envoyproxy/envoy:latest
+          image: envoyproxy/envoy-alpine:v1.12.2
           volumeMounts:
             - name: envoy-config
               mountPath: /var/opt/envoy
           command: ["envoy", "-c", "/var/opt/envoy/envoy.yaml"]
           resources:
             limits:
-              memory: 512Mi
+              memory: 100Mi
           ports:
             - name: app
               containerPort: 15001
@@ -40,7 +40,7 @@ spec:
               containerPort: 8001
 
         - name: grpc-server
-          image: seion/grpc-lb-with-envoy-server
+          image: seion/envoy-sidebar-for-grpc-lb-server
           imagePullPolicy: Always
           ports:
             - name: grpc
@@ -48,9 +48,9 @@ spec:
               protocol: TCP
           env:
             - name: PORT
-              value: 50051
+              value: "50051"
           resources:
             requests:
-              memory: 200Mi
-              cpu: 500m
+              memory: 100Mi
+              cpu: 100m
       terminationGracePeriodSeconds: 60

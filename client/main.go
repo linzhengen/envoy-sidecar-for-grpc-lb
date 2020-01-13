@@ -9,7 +9,7 @@ import (
 
 	"github.com/golang/protobuf/jsonpb"
 
-	"github.com/linzhengen/grpc-lb-with-envoy/pb"
+	"github.com/linzhengen/envoy-sidecar-for-grpc-lb/pb"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"

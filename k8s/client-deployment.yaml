@@ -21,14 +21,14 @@ spec:
             name: client-sidecar-envoy
       containers:
         - name: envoy
-          image: envoyproxy/envoy:latest
+          image: envoyproxy/envoy-alpine:v1.12.2
           volumeMounts:
             - name: envoy-config
               mountPath: /var/opt/envoy
           command: ["envoy", "-c", "/var/opt/envoy/envoy.yaml"]
           resources:
             limits:
-              memory: 512Mi
+              memory: 100Mi
           ports:
             - name: app
               containerPort: 15001
@@ -36,7 +36,7 @@ spec:
               containerPort: 8001
 
         - name: grpc-client
-          image: seion/grpc-lb-with-envoy-client
+          image: seion/envoy-sidebar-for-grpc-lb-client
           imagePullPolicy: Always
           env:
             - name: GRPC_SERVER_HOST

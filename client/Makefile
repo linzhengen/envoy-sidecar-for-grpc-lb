@@ -4,6 +4,6 @@ help: ## Print help
 
 .PHONY: docker-push
 docker-push: ## Build container and push
-	time docker build --file ./Dockerfile --no-cache --tag seion/grpc-lb-with-envoy-client .
+	time docker build --file ./Dockerfile --no-cache --tag seion/envoy-sidebar-for-grpc-lb-client .
 	docker login
-	docker push seion/grpc-lb-with-envoy-client
+	docker push seion/envoy-sidebar-for-grpc-lb-client
