@@ -4,7 +4,7 @@ go 1.13
 
 require (
 	github.com/golang/protobuf v1.3.2
-	github.com/linzhengen/envoy-sidecar-for-grpc-lb/pb v0.0.0-20200113182415-cfbfef49ea32 // indirect
+	github.com/linzhengen/envoy-sidecar-for-grpc-lb/pb v0.0.0-20200113183536-1cb84b2eb0c5
 	golang.org/x/net v0.0.0-20191209160850-c0dbc17a3553 // indirect
 	google.golang.org/grpc v1.26.0
 )
