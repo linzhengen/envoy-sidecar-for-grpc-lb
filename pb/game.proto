@@ -1,10 +1,12 @@
 syntax = "proto3";
 
+package pb;
+
 service Janken {
-    rpc Reverse (JankenRequest) returns (JankenResponse) {}
+    rpc Show (JankenRequest) returns (JankenResponse) {}
 }
 
-enum ShowType {
+enum Choice {
     // グー
     ROCK = 0;
     // チョッキ
@@ -14,9 +16,11 @@ enum ShowType {
 }
 
 message JankenRequest {
-    ShowType show_type = 1;
+    Choice my = 1;
 }
 
 message JankenResponse {
-    ShowType show_type = 1;
+    Choice my = 1;
+    Choice your = 2;
+    bool is_win = 3;
 }
