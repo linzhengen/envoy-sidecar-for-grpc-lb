@@ -51,7 +51,7 @@ func main() {
 	http.HandleFunc("/ping", func(w http.ResponseWriter, req *http.Request) {})
 
 	http.HandleFunc("/janken", func(w http.ResponseWriter, req *http.Request) {
-		log.Printf("Recived getColor request: %v", req)
+		log.Printf("Recived janken request: %v", req)
 		my, _ := strconv.ParseInt(req.URL.Query().Get("my"), 10, 32)
 		resp, err := c.Show(ctx, &pb.JankenRequest{My: pb.Choice(my)})
 		if err != nil {
