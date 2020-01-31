@@ -54,6 +54,7 @@ func main() {
 		log.Printf("Recived janken request: %v", req)
 		koukun, _ := strconv.ParseInt(req.URL.Query().Get("koukun"), 10, 32)
 		resp, err := c.Show(ctx, &pb.JankenRequest{Koukun: pb.Choice(koukun)})
+		log.Printf("%+v", resp)
 		if err != nil {
 			handleError("Janken", err, w)
 			return

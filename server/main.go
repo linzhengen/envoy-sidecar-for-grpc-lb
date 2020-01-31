@@ -41,8 +41,8 @@ func choice(m map[int32]string) pb.Choice {
 }
 
 func winner(kk, sk pb.Choice) string {
-	if kk == sk {
-		return "no winner"
+	if kk == pb.Choice_None || sk == pb.Choice_None || kk == sk {
+		return "no winner, need retry"
 	}
 	if (kk == pb.Choice_CHOKI && sk == pb.Choice_PA) || (kk == pb.Choice_PA && sk == pb.Choice_GU) || (kk == pb.Choice_GU && sk == pb.Choice_CHOKI) {
 		return "koukun is winner"
