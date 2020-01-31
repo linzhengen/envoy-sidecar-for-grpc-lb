@@ -27,12 +27,12 @@ func (s *server) Show(ctx context.Context, in *pb.JankenRequest) (*pb.JankenResp
 		hostname = ""
 	}
 	grpc.SendHeader(ctx, metadata.Pairs("hostname", hostname))
-	c := choice(pb.Choice_name)
-	log.Println(c)
+	sk := choice(pb.Choice_name)
+	log.Println(sk)
 	return &pb.JankenResponse{
-		My:    in.My,
-		Your:  c,
-		IsWin: isWin(in.My, c),
+		Koukun:  in.Koukun,
+		Shinkun: sk,
+		Winner:  winner(in.Koukun, sk),
 	}, nil
 }
 
@@ -40,8 +40,14 @@ func choice(m map[int32]string) pb.Choice {
 	return pb.Choice(int32(rand.Intn(len(m))))
 }
 
-func isWin(o, t pb.Choice) bool {
-	return (o == pb.Choice_ROCK && t == pb.Choice_PAPER) || (o == pb.Choice_PAPER && t == pb.Choice_SCISSORS) || (o == pb.Choice_SCISSORS && t == pb.Choice_ROCK)
+func winner(kk, sk pb.Choice) string {
+	if kk == sk {
+		return "no winner"
+	}
+	if (kk == pb.Choice_CHOKI && sk == pb.Choice_PA) || (kk == pb.Choice_PA && sk == pb.Choice_GU) || (kk == pb.Choice_GU && sk == pb.Choice_CHOKI) {
+		return "koukun is winner"
+	}
+	return "shinkun is winner"
 }
 
 func main() {

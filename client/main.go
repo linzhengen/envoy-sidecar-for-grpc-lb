@@ -52,8 +52,8 @@ func main() {
 
 	http.HandleFunc("/janken", func(w http.ResponseWriter, req *http.Request) {
 		log.Printf("Recived janken request: %v", req)
-		my, _ := strconv.ParseInt(req.URL.Query().Get("my"), 10, 32)
-		resp, err := c.Show(ctx, &pb.JankenRequest{My: pb.Choice(my)})
+		koukun, _ := strconv.ParseInt(req.URL.Query().Get("koukun"), 10, 32)
+		resp, err := c.Show(ctx, &pb.JankenRequest{Koukun: pb.Choice(koukun)})
 		if err != nil {
 			handleError("Janken", err, w)
 			return

@@ -3,7 +3,7 @@ module github.com/linzhengen/envoy-sidecar-for-grpc-lb/server
 go 1.13
 
 require (
-	github.com/linzhengen/envoy-sidecar-for-grpc-lb/pb v0.0.0-20200113183536-1cb84b2eb0c5
+	github.com/linzhengen/envoy-sidecar-for-grpc-lb/pb v0.0.0-20200131150006-a403f8b11209
 	golang.org/x/net v0.0.0-20191209160850-c0dbc17a3553 // indirect
 	golang.org/x/sys v0.0.0-20200113162924-86b910548bc1 // indirect
 	golang.org/x/text v0.3.2 // indirect
