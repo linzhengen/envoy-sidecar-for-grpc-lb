@@ -8,19 +8,19 @@ service Janken {
 
 enum Choice {
     // グー
-    ROCK = 0;
-    // チョッキ
-    PAPER = 1;
+    GU = 0;
+    // チョキ
+    CHOKI = 1;
     // パー
-    SCISSORS = 2;
+    PA = 2;
 }
 
 message JankenRequest {
-    Choice my = 1;
+    Choice koukun = 1;
 }
 
 message JankenResponse {
-    Choice my = 1;
-    Choice your = 2;
-    bool is_win = 3;
+    Choice koukun = 1;
+    Choice shinkun = 2;
+    string winner = 3;
 }
